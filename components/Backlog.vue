@@ -1,0 +1,36 @@
+<template>
+  <base-card mode="backlog">
+    <template v-slot:title>
+      Backlog
+    </template>
+    <error-table
+      mode="backlog"
+      :error-data="backlog"
+      @backlog-error="backlogError"
+    ></error-table>
+  </base-card>
+</template>
+
+<script>
+import BaseCard from "~/UI/BaseCard.vue";
+
+import ErrorTable from "./ErrorTable.vue";
+
+export default {
+  props: ["backlog"],
+  emits: ["move-backlog"],
+  components: {
+    BaseCard,
+
+    ErrorTable
+  },
+  methods: {
+    backlogError(index) {
+      // console.log("backlog data", index, code, text);
+      this.$emit("move-backlog", index);
+    }
+  }
+};
+</script>
+
+<style></style>
