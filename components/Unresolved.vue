@@ -3,13 +3,6 @@
     <template v-slot:title>
       Unresolved
     </template>
-
-    <!-- <error-lists
-        v-for="error in unresolved"
-        :key="error.index"
-        :code="error.code"
-        :text="error.text"
-      ></error-lists> -->
     <error-table
       mode="unresolved"
       undo-mode="unresolvedUndo"
@@ -26,15 +19,15 @@ import BaseCard from "~/UI/BaseCard.vue";
 import ErrorTable from "./ErrorTable.vue";
 export default {
   components: { BaseCard, ErrorTable },
-  emits: ["resolve-error", "undo-backlog"],
+
   props: ["unresolved"],
   methods: {
     resolveError(index) {
-      // console.log("unresolved data", index, code, text);
-      this.$emit("resolve-error", index);
+      console.log(index);
+      this.$store.dispatch("moveToResoved", index);
     },
     undoBacklog(index) {
-      this.$emit("undo-backlog", index);
+      this.$store.dispatch("undoBacklog", index);
     }
   }
 };

@@ -18,7 +18,7 @@ import ErrorTable from "./ErrorTable.vue";
 
 export default {
   props: ["backlog"],
-  emits: ["move-backlog"],
+
   components: {
     BaseCard,
 
@@ -27,7 +27,7 @@ export default {
   methods: {
     backlogError(index) {
       // console.log("backlog data", index, code, text);
-      this.$emit("move-backlog", index);
+      this.$store.dispatch("moveBacklogToUnresolved", index);
     }
   }
 };

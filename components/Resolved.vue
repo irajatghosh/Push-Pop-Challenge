@@ -24,11 +24,11 @@ import BaseCard from "~/UI/BaseCard.vue";
 import ErrorTable from "./ErrorTable.vue";
 export default {
   props: ["resolved"],
-  emits: ["undo-resolved"],
+
   components: { BaseCard, ErrorTable },
   methods: {
     unresolveError(index) {
-      this.$emit("undo-resolved", index);
+      this.$store.dispatch("undoResolved", index);
     }
   }
 };
