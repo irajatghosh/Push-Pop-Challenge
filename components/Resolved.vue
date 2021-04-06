@@ -4,12 +4,6 @@
       Resolved
     </template>
 
-    <!-- <error-lists
-      v-for="error in resolved"
-      :key="error.index"
-      :code="error.code"
-      :text="error.text"
-    ></error-lists> -->
     <error-table
       mode="resolved"
       :error-data="resolved"

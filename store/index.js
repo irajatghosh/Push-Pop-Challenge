@@ -1,7 +1,8 @@
 export const state = () => ({
   resolved: [],
   unresolved: [],
-  backlog: []
+  backlog: [],
+  position: null
 });
 
 export const getters = {
@@ -29,18 +30,28 @@ export const mutations = {
   errorMovedToResolved(state, payload) {
     const selectedData = state.unresolved.find(item => item.index === payload);
     const newData = state.unresolved.filter(item => item.index !== payload);
+    const position = state.unresolved.findIndex(
+      index => index.index === payload
+    );
+    state.position = position;
     state.unresolved = newData;
     state.resolved.unshift(selectedData);
   },
   undoTheResolved(state, payload) {
     const selectedData = state.resolved.find(item => item.index === payload);
     const newData = state.resolved.filter(item => item.index !== payload);
+
     state.resolved = newData;
-    state.unresolved.unshift(selectedData);
+    const index = state.position;
+    // state.unresolved.unshift(selectedData);
+    state.unresolved.splice(index, 0, selectedData);
+    state.position = null;
   },
   errorMovedToUnresolved(state, payload) {
     const selectedData = state.backlog.find(item => item.index === payload);
     const newData = state.backlog.filter(item => item.index !== payload);
+    const position = state.backlog.findIndex(index => index.index === payload);
+    state.position = position;
     state.backlog = newData;
     state.unresolved.unshift(selectedData);
   },
@@ -48,7 +59,10 @@ export const mutations = {
     const selectedData = state.unresolved.find(item => item.index === payload);
     const newData = state.unresolved.filter(item => item.index !== payload);
     state.unresolved = newData;
-    state.backlog.unshift(selectedData);
+    // state.backlog.unshift(selectedData);
+    const index = state.position;
+    state.backlog.splice(index, 0, selectedData);
+    state.position = null;
   }
 };
 

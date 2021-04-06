@@ -15,7 +15,7 @@
 
 <script>
 import BaseCard from "~/UI/BaseCard.vue";
-// import ErrorLists from "./ErrorLists.vue";
+
 import ErrorTable from "./ErrorTable.vue";
 export default {
   components: { BaseCard, ErrorTable },
@@ -23,10 +23,11 @@ export default {
   props: ["unresolved"],
   methods: {
     resolveError(index) {
-      console.log(index);
+      console.log("position", index);
       this.$store.dispatch("moveToResoved", index);
     },
     undoBacklog(index) {
+      console.log("undo position", index);
       this.$store.dispatch("undoBacklog", index);
     }
   }

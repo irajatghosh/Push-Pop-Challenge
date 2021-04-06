@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="shadow bg-gray-50  sm:rounded-md md:overflow-hidden sm:overflow-hidden"
-    :class="borderColor"
-  >
+  <div class="shadow bg-gray-50 sm:rounded-md" :class="borderColor">
     <div class="px-4 py-5  space-y-3 sm:p-6">
       <span
         class="px-2 inline-flex text-base leading-5 font-semibold rounded-full text-white"

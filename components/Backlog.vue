@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     backlogError(index) {
-      // console.log("backlog data", index, code, text);
       this.$store.dispatch("moveBacklogToUnresolved", index);
     }
   }

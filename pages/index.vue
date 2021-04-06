@@ -3,7 +3,7 @@
     <the-header></the-header>
 
     <div
-      class="md:grid md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-3 lg:gap-2 px-4 md:gap-2 md:container md:mx-auto sm:container sm:mx-auto"
+      class="md:grid sm:grid lg:grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 lg:gap-2 px-4 md:gap-2 container sm:container sm:mx-auto"
     >
       <div>
         <unresolved :unresolved="unresolvedErrors"></unresolved>
